@@ -1,5 +1,8 @@
 # xArm-Python-SDK
 
+## Before
+Here I use this api to execute two xArm6s picking and placing. The whole code is in file code_202312.py.  
+
 ## Overview
 xArm Python SDK
 
