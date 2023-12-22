@@ -97,16 +97,16 @@ class Config:
                        [222.4, -359.4, -85.5, 180.0, 0.8, -58.1],  # 2
                        [569.0, -358.3, -58.0, 179.5, -4.6, -31.9],  # 3
                        [542.6, 405.6, -19.8, 177.3, -34.5, 95.4],  # 4
-                       [507.5, 374.5, 650.0, 111.2, -12.2, 167.8]]  # 5
+                       [507.5, 374.5, 508.5, 111.2, -12.2, 167.8]]  # 5
 
     b_basket_points = [[588.5, 371.4, 41.6, 180.0, 0.5, 32.4],  # 1
                        [275.6, 337.3, -20.8, 180.0, 2.6, 50.9],  # 2
                        [-27.7, 396.5, -22.1, 180.0, 2.6, 94.1],  # 3
                        [48.9, -365.0, -87.9, 178.9, -23.9, -83.9],  # 4
-                       [57.6, -323.5, 606.2, 177.4, -53.4, -77.8]]  # 5
+                       [9.2, -442.2, 517.0, 179.8, -52.8, -88.6]]  # 5
 
     # End Effector. You can set gripper_on to 0 in order to just seeing the trajectories.
-    gripper_on = 0
+    gripper_on = 1
     gripper_off = 0
 
     # Sleep Time
@@ -122,14 +122,6 @@ class Config:
     # stage2 = [mid_point, basket_point], dynamic get from get_stage_2_3()
     # stage3 = [gripper_off, mid_point, high_point], dynamic get from get_stage_2_3()
     stage4 = [high_point, zero_point]
-
-    # Just for adjust 4 and 5 points, you need to modify f_basket_points[3],[4] and b_basket_points[3], [4]
-    # Or if you also want to test mid_point_b and mid_point_f
-    lf4 = [mid_point_f, f_basket_points[3], high_point]
-    lf5 = [mid_point_f, f_basket_points[4], high_point]
-
-    lb4 = [mid_point_b, b_basket_points[3], high_point]
-    lb5 = [mid_point_b, b_basket_points[4], high_point]
 
 
 def get_mid_point(list1):
@@ -460,43 +452,11 @@ class BiXarm:
         # Quick End
         self.quick_back()
 
-    def test_f_4(self):
-        self.quick_start()
-
-        self.xarm_f.action_handler(Config.lf4)
-
-        self.quick_back()
-
-    def test_f_5(self):
-        self.quick_start()
-
-        self.xarm_f.action_handler(Config.lf5)
-
-        self.quick_back()
-
-    def test_b_4(self):
-        self.quick_start()
-
-        self.xarm_f.action_handler(Config.lb4)
-
-        self.quick_back()
-
-    def test_b_5(self):
-        self.quick_start()
-
-        self.xarm_f.action_handler(Config.lb5)
-
-        self.quick_back()
-
 
 def main():
     bi_xarm = BiXarm()
     bi_xarm.baskets_planning(Config.loop)
     # bi_xarm.shelf_planning(Config.loop)
-    # bi_xarm.test_f_4()
-    # bi_xarm.test_f_5()
-    # bi_xarm.test_b_4()
-    # bi_xarm.test_b_5()
 
 
 if __name__ == "__main__":
