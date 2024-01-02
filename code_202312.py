@@ -250,7 +250,7 @@ class ProjectXarm(XArmAPI):
     #     return cosine_similarity([p1],[p2])
 
 
-class BiXarm:
+class BiXarm(object):
     """
         1st floor: | 3 | 2 | 1 |
         xArms:         b   f
